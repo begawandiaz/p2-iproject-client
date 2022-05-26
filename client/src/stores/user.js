@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import axiosInstance from '../api/myserver'
 import Swal from 'sweetalert'
-import { nextTick } from 'vue'
 export const useUserStore = defineStore({
   id: 'user',
   state: () => ({
@@ -55,7 +54,6 @@ export const useUserStore = defineStore({
 
         this.router.push('/myprofile')
       } catch (err) {
-        console.log(err)
         Swal({
           text: err.response.data.message,
           icon : 'error'
@@ -72,7 +70,6 @@ export const useUserStore = defineStore({
             access_token : localStorage.getItem("access_token")
           }
         })
-
         this.myProfile = data
       } catch (err) {
         console.log(err)
